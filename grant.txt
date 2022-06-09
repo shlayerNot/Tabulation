@@ -1,0 +1,29 @@
+GRANT ALL PRIVILEGES ON *.* TO 'myuser'@'%' WITH GRANT OPTION;
+
+grant all privileges on mydb.* to myuser@'%' identified by 'mypasswd';
+grant all privileges on mydb.* to myuser@localhost identified by 'mypasswd';
+
+GRANT ALL PRIVILEGES ON *.* TO 'myuser'@'%' WITH GRANT OPTION;
+
+grant all privileges on bycit.* to 'root'@'192.168.0.0/255.255.255.0' with grant option;
+
+flush privileges;
+
+
+
+create view vfinal_score as select final_score.*,
+concat(`candidate`.`fname`,' ',`candidate`.`mi`,' ',`candidate`.`lname`) AS `c_full_name`,
+concat(`judge`.`fname`,' ',`judge`.`mi`,' ',`judge`.`lname`) AS `j_full_name`,
+judge.id as judge_id,
+candidate.id as c_id,
+candidate.number as c_number,
+candidate.type as c_type,
+candidate.is_active as c_is_active
+from final_score,candidate,judge
+where final_score.candidate_id=candidate.id and
+final_score.judge=judge.id
+
+
+
+final grat
+	- grant all privileges on pageant.* to 'root'@'192.168.0.0/255.255.0.0' with grant option;
